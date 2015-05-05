@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+
+import sys
+import os.path as path
+import random
+
+DEFAULT_ZSIG_FILE = "~/.owl/zsigs"
+
+def main(zsig_file):
+    with open(zsig_file) as f:
+        zsigs = [l for l in f.readlines() if l != "\n"]
+        print(random.choice(zsigs).rstrip("\n"))
+
+if __name__=="__main__":
+    filename = DEFAULT_ZSIG_FILE if len(sys.argv) == 1 else sys.argv[1]
+    main(path.realpath(path.expanduser(filename)))
